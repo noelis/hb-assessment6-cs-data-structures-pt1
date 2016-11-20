@@ -1,0 +1,91 @@
+I. Runtime
+
+1. When calculating the Big O notation for a particular algorithm, it’s necessary to consider the length of time it takes for the algorithm to run as the algorithm’s workload approaches infinity. You can think of the workload as the number of tasks required to complete a job. What determines the workload of figuring out whether your box of animal crackers contains an elephant?
+
+The workload is determined by the number of animal crackers that are in the box. Each of which you must check if it's an elephant or not. If it is, you add it to a variable tracker that keeps count of how many elephants there are.
+
+This problem would require a single for loop and a counter variable. Therefore, it would be O(n) or has a linear runtime.
+
+2. Order the following runtimes in descending order of efficiency (that is, fastest runtimes first, slowest last) as n approaches infinity:
+O(1)
+O(log n)
+O(n)
+O(n log n)
+O(n2)
+O(2n) (i.e. 2 to the n-th power)
+
+II. Stacks and Queues
+
+1. In the following cases, would a stack or queue be a more appropriate data structure?
+    - The process of loading and unloading pallets onto a flatbed truck: 
+        Stack (LIFO)
+    - Putting bottle caps on bottles of beer as they roll down an assembly line:
+        Queue (FIFO)
+    - Calculating the solution to this mathematical expression: 2 + (7 * 4) - (3 / 2)
+        Queue(FIFO)
+2. Describe two more situations where a queue would be an appropriate data structure.
+
+    - Ordering food in a drive-thru.
+    - Replenishing the milk gallons in the dairy section. You want the first gallons that were put in
+    to be the ones that are available to the customers (since they will expire sooner.) The newest gallons that
+    came in should be added to the back behind those since those expire later. (That's why you should always get a gallon from the back if you want a fresher one! Same for the bread aisle.)
+
+3. Describe two more situations where a stack would be an appropriate data structure.
+    
+    - Displaying candles in a store. You would start the display with adding candles to the
+    back of the shelf, until you reached the front. When people go to buy a candle from that
+    shelf they normally pick the one that was last placed on the shelf (aka the one that is towards the front of the shelf.)
+    - Decorating and unmounting the christmas decorations on the tree! You put the lights on first, then the ornaments, then the beads. When you go to take everything down, you start with the beads, then the ornaments, then the lights. (At least thats how I do it with my Christmas tree. Any other method is pure madness! :) )
+
+III. Linked Lists
+
+1. Given the linked list below, which are the nodes? What is the data for each node? Where is the head? Where is the tail? (Please be as specific as possible — exactly which parts of the diagram correspond to each part? Arrows? Boxes? Text?)
+
+    - Nodes: the large rectangles which hold 2 smaller rectangles inside with a fruit type in one and the word 'next' in the other which points with an arrow to the next node in the list.
+    - Data: is the 2nd largest rectangle. It lives in side a larger rectangle (aka node). The data rectangle holds a fruit type inside of it. 
+    - Head: there is a large rectangle with two smaller nested rectangles inside where one says the name of the list (LList), the other says 'head' and points to the node which is at the beginning of the list (the apple node). 
+    - Tail: the diagram doesn't have a specific 'tail' rectangle that points to the end of the linked list. However you can find it by finding the node that points to 'None'. The cherry node is the only one whose 'next' inner rectangle and arrow is pointing to the word 'None' so that is the tail of this list. 
+
+2. What’s the difference between doubly- and singly-linked lists?
+    
+    Single linked lists only hold the information for what comes before or after. They do not know both.
+    simple example :
+    Apple > Berry > Cherry
+
+    Doubly-linked lists hold both information: which node comes before them and which comes after.
+    simple example:
+    None < Apple > < Berry > < Cherry >
+
+3. Why is it faster to append to a linked list if we keep track of the tail as an attribute?
+    It's faster to append to a linked list if we know the tail attribute because that way when we append we just search for the node that is recognized as the tail, then add a new node and reconfigure the tail attribute to point to the new node.
+
+    If we didn't know the tail we would have to go through all of the nodes in the list to check if they are the tail or not before appending a new node to it. This is essentially a for loop instead of an index operation. As we learned this week, list indexing or dictionary look up is O(1), where as a for loop is O(n).
+
+Trees
+
+1. Given the tree above, in what order would a Breadth First Search (BFS) algorithm visit each node until finding burrito (starting at food)? Just list the order of nodes visited; no need to recreate the state of the algorithm data in your answer.
+ 
+    [ Food, Italian, Indian, Mexican, lasanga, pizza, thin-crust, chicago-style, new york style, sicilian, tikka masala, saag, burrito. ]
+
+    or:
+
+    [food]
+    [Italian, Indian, Mexican]
+    [Indian, Mexican, lasanga, pizza, thin-crust, chicago-style, new york style, sicilian]
+    [Mexican, lasanga, pizza, thin-crust, chicago-style, new york style, sicilian, tikka masala, saag]
+    [lasanga, pizza, thin-crust, chicago-style, new york style, sicilian, tikka masala, saag, burrito ]
+
+
+2. Given the tree above, in what order would a Depth First Search (DFS) algorithm visit each node until finding Chicago-style (starting at food)? Just list the order of nodes visited; no need to recreate the state of the algorithm data in your answer.
+
+    [Food]
+    [Italian, Indian, Mexican]
+    [Italian, Indian, burrito]
+
+
+3. How is a binary search tree different from other trees?
+
+    Binary trees have a rule for arrangement and there are only ever 2 child nodes (left and right) on each node. 
+
+    With binary search trees we trade hierarchy for speed, because with every choice we make we reduce our number of options by 50%. This means binary search trees (if balanced) have a very efficient and scaleable runtime of O(log n). For example, you can search 1,000 nodes in only 10 steps.
+
